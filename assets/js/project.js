@@ -14,12 +14,12 @@ const projects = [
     Githublink: "https://github.com/Momin-Hasson/Biometrick-Panic-Box-Project",
   },
   {
-    title: "Chess Engine",
-    cardImage: "assets/images/project-page/chess.jpg",
+    title: "Candy Crush",
+    cardImage: "assets/images/project-page/CandyCrushLogo.PNG",
     description: "A chess engine for a popular game dev engine.",
     tagimg: "https://image.flaticon.com/icons/png/512/643/643350.png",
     Previewlink: "",
-    Githublink: "",
+    Githublink: "https://github.com/Momin-Hasson/Candy-Crush-Game",
   },
   {
     title: "Flappy Bird",
