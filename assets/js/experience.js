@@ -18,6 +18,13 @@ const exp = [
     time: "(January, 2017 to December, 2021)",
     desp: "<li>Performed various clerical duties with respect to the preparation of letters and other documents.</li> <li>Provided excellent customer service with a positive and professional attitude.</li> <li>Responsible for general hardware and software-related issues.</li>",
   },
+  {
+    title: "Associate Software Engineer",
+    cardImage: "assets/images/experience-page/Ace_Hardware_Logo.jpg",
+    place: "Oak Brook, IL",
+    time: "(February, 2023 to Present)",
+    desp: "<li>.</li>",
+  },
   
 ];
 
