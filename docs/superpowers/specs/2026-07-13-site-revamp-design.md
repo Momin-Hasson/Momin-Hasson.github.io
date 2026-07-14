@@ -33,36 +33,62 @@ requested later.
 Out of scope: rewriting bio/project/experience copy, adding new sections, backend
 or CMS integration, moving to a framework/build step.
 
+**Note on real content found while reviewing the pages**: two project cards in
+`projects.html` have mismatched descriptions from an old template edit
+("Candy Crush" is described as a chess engine; "Chicago Tourism Website" is
+described as a Flappy Bird clone). Since content edits are out of scope, these
+are carried over as-is — flag if you'd like them fixed as a quick aside.
+
 ## 1. Visual Design System
 
-Direction: **editorial / warm** — feels like a well-designed personal site or
-magazine rather than a tech dashboard or SaaS product.
+Direction: **editorial / warm**, grounded in what the content actually is —
+Momin's real work is backend/API and cloud engineering (responsive APIs,
+microservices, VM migration, distributed systems coursework), not generic
+"portfolio" filler. The signature element below is built from that, not from a
+stock hero formula.
 
-- **Palette**: warm off-white background (`#FAF6F0`), near-black ink text
-  (`#1F1B16`), one primary accent — muted terracotta/rust (`#C1502E`) — used for
-  links, tags, highlights, and hover states. A secondary muted sage/olive accent
-  may be used sparingly for variety (tags, dividers) but terracotta remains
-  primary.
-- **Type**: serif display face (Fraunces or Source Serif 4, self-hosted under
-  `assets/fonts/`) for name/headings, paired with a clean sans (Inter, also
-  self-hosted) for body copy and UI chrome (nav, buttons, captions).
+- **Palette**: warm paper background (`#F6F1E7`), near-black warm ink
+  (`#211B14`) for text, one primary accent — a deep rust/terracotta
+  (`#B8471F`) — used for links, tags, and highlights. A second accent, an
+  ink-blue (`#2B4257`), is pulled specifically from the "blueprint/schematic"
+  signature concept below and used only in the hero's line art and section
+  dividers, so it reads as intentional rather than decorative variety.
+- **Type**: serif display face (Fraunces, self-hosted) for name/headings,
+  paired with Inter for body copy and UI chrome. A monospace face (e.g. JetBrains
+  Mono, self-hosted) is used sparingly for labels tied to technical content —
+  API names, stack tags, dates — reinforcing the engineering subject matter
+  instead of decorating randomly.
 - **Layout**: generous whitespace; text-heavy pages (research, reference) use a
   single reading column (~680–760px); gallery/list pages (projects, design,
   experience, education) use a wider responsive grid.
-- **Motion**: subtle fade/slide-in on scroll via `IntersectionObserver`. No
-  particle backgrounds, no preloader spinner, no animated typing effect unless
-  reimplemented lightly in vanilla JS.
+- **Signature element (hero, Home page)**: a Three.js scene rendering a thin
+  wireframe "network" — nodes and arcing connector lines drawn in the ink-blue
+  accent against the paper background — evoking the distributed systems/API
+  work described on the Experience and Education pages. It rotates slowly and
+  drifts subtly with cursor position; GSAP drives the page-load entrance
+  (nodes/lines draw themselves in) rather than just appearing. This is the one
+  bold risk on the page — everything else stays quiet so it lands.
+- **Motion (GSAP)**: GSAP + ScrollTrigger replace vanilla scroll handling
+  everywhere — orchestrated hero load sequence on Home, scroll-triggered
+  reveals for section entrances, and a timeline-draw animation for the
+  Experience/Education chronological lists (a line that extends as you scroll,
+  since those pages are genuinely sequential — this is the one place numbered/
+  ordered structure is actually justified by the content).
 - **Icons**: small hand-picked inline SVGs (social links, arrows, tags) instead
   of Font Awesome/Iconify/academicons CDN dependencies.
 
 ## 2. Technical Approach
 
 Stays plain static HTML/CSS/JS, no build step, deploys to GitHub Pages exactly as
-today.
+today. GSAP and Three.js are added via CDN `<script>` tags (same pattern as the
+current jQuery/Bootstrap CDN includes) — no bundler introduced.
 
 **Removed dependencies**: jQuery, Bootstrap 4, particles.js, particles config,
 Iconify, Font Awesome CDN, academicons CDN, `hover-min.css`, the animated-text
 plugin, the atom-spinner preloader.
+
+**Added dependencies**: GSAP core + ScrollTrigger plugin (CDN), Three.js (CDN),
+used only where listed above — not applied indiscriminately across every page.
 
 **New shared files**:
 - `assets/css/base.css` — design tokens (color/type/spacing custom properties),
@@ -72,7 +98,21 @@ plugin, the atom-spinner preloader.
 - `assets/css/<page>.css` — one per page, page-specific layout only (replaces
   the current per-page CSS files, same naming convention).
 - `assets/js/nav.js` — mobile menu toggle, active-link highlighting.
-- `assets/js/reveal.js` — scroll-triggered fade/slide-in animations.
+- `assets/js/motion.js` — GSAP/ScrollTrigger setup: reveals, timeline-draw,
+  hero entrance sequencing.
+- `assets/js/hero-scene.js` — Three.js wireframe network scene (Home only).
+
+**Performance & accessibility guardrails for the Three.js/GSAP additions**:
+- The Three.js scene loads only on Home, is paused via `IntersectionObserver`
+  when scrolled out of view, caps `devicePixelRatio` at 2, and uses simple line/
+  point geometry (no textures, no heavy models) to stay light on low-end
+  devices.
+- `prefers-reduced-motion` is respected: the Three.js scene falls back to a
+  static SVG rendering of the same line art, and GSAP scroll reveals fall back
+  to an instant, non-animated state.
+- On narrow/mobile viewports the hero scene renders at reduced complexity
+  (fewer nodes) rather than being disabled outright, so mobile still gets the
+  signature look, just cheaper to render.
 
 Existing per-page JS files (`education.js`, `experience.js`, `project.js`,
 `references.js`, `research.js`, `event.js`, `sem_temp.js`, `travel_temp.js`)
@@ -118,3 +158,15 @@ No test suite (static site). Verification per page:
   scripts silently depending on them).
 - Confirm nav links and footer social links resolve correctly across all pages.
 - Confirm Google Analytics tag still fires (network tab check).
+- On Home: confirm the Three.js hero scene renders, pauses when scrolled out of
+  view, and degrades to the static SVG fallback under `prefers-reduced-motion`.
+- Confirm GSAP ScrollTrigger reveals and the Experience/Education timeline-draw
+  animation fire correctly on scroll and don't jank on mid-range mobile.
+
+## Note on process
+
+This spec was shaped using the frontend-design skill's approach: choices above
+(palette, type pairing, and especially the wireframe-network signature element)
+are derived from Momin's actual content — API/backend/cloud work — rather than
+a generic portfolio template, to avoid landing on the generic "warm cream +
+serif + terracotta" look this exact palette could otherwise default to.
