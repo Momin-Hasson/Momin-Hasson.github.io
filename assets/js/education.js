@@ -1,12 +1,19 @@
 const formalEducation = [
   {
-    title: "College of DuPage",
-    time: "August 2017 - June 2019",
+    title: "M.S. in Computer Science",
+    subtitle: "Georgia Institute of Technology, Atlanta, GA. In progress.",
+    time: "Expected 2028",
+    current: true,
   },
   {
-    title: "University of Illinois Chicago",
-    subtitle: "Bachelor's in Computer Science",
-    time: "August 2019 - May 2022",
+    title: "B.S. in Computer Science",
+    subtitle: "University of Illinois Chicago, Chicago, IL",
+    time: "Aug 2019 to May 2022",
+  },
+  {
+    title: "College of DuPage",
+    subtitle: "Glen Ellyn, IL",
+    time: "Aug 2017 to Jun 2019",
   },
 ];
 
@@ -15,12 +22,14 @@ function renderTimeline() {
   if (!container) return;
   container.innerHTML = `<div class="timeline__line"></div>` + formalEducation
     .map(
-      ({ title, subtitle, time }) => `
-      <div class="timeline__item" data-reveal>
+      ({ title, subtitle, time, current }) => `
+      <div class="timeline__item${current ? " timeline__item--now" : ""}">
         <span class="timeline__marker"></span>
-        <h3 class="timeline__title">${title}</h3>
-        ${subtitle ? `<p class="timeline__subtitle">${subtitle}</p>` : ""}
         <p class="timeline__meta">${time}</p>
+        <div>
+          <h3 class="timeline__title">${title}</h3>
+          <p class="timeline__subtitle">${subtitle}</p>
+        </div>
       </div>`
     )
     .join("");

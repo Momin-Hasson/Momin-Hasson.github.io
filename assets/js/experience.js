@@ -1,24 +1,51 @@
+const M = (t) => `<mark class="metric">${t}</mark>`;
+
 const exp = [
   {
-    title: "Software Developer Intern",
-    cardImage: "assets/images/experience-page/orblogic_logo.jpg",
-    place: "Upper Saddle River, NJ",
-    time: "(May, 2021 to August, 2021)",
-    desp: "<li>Revamped one of the company’s major projects by deploying responsive APIs & facilitated an increase in faster response by 30%.</li> <li>Exposed to the Microservices architecture, Scrum, SDLC, and participated in a case study with across-functional team and presented workable solutions in promoting the company’s advertisements.</li> <li>Rendered assistance in designing 20+ APIs covering more than 100 websites for the company’s major clients to ensure the best possible fastest processing of data.</li> <li> Interacted with the clients & understood their needs to finalize the code as per their requirements</li>",
+    title: "Software Engineer",
+    org: "Ace Hardware Corporation, Oak Brook, IL",
+    time: "Feb 2023 to present",
+    current: true,
+    bullets: [
+      `Won ${M("first place")} in Ace Hardware's IT hackathon for an AI coaching assistant that gave HVAC service representatives in-call guidance and live translation, then analyzed recordings to surface upsell opportunities. Presented to the CEO and now an active company project.`,
+      `Led the performance and caching architecture for Ace's franchise and corporate storefronts, implementing multi-instance Redis, Azure Blob image caching, and middleware optimization that cut page load times by ${M("98%")}.`,
+      "Integrated ServiceTitan authentication and the Google Reviews API to deliver real-time service data to franchise storefronts nationwide under third-party auth and rate-limit constraints.",
+      `Architected and delivered ${M("30+")} RESTful APIs for the Paint Redesign and Home Services platforms, defining service contracts and integration patterns now used across franchise and corporate systems.`,
+      "Led security hardening across Ace online applications: migrated service account credentials to Azure Key Vault, modernized authentication to Entra ID managed identities, and set secret-handling standards adopted on every web property.",
+      "Built a reusable React component library adopted across Ace web properties, eliminating duplicated front-end work and enforcing brand consistency.",
+      "Containerized applications with Docker and built GitHub Actions CI/CD pipelines to standardize releases across environments. Configured Azure Monitor alerting to on-call mobile notifications and led Azure cost optimization.",
+    ],
   },
   {
-    title: "Tax Associate",
-    cardImage: "assets/images/experience-page/Zahoor_logo.png",
-    place: "Carol Stream, IL",
-    time: "(January, 2017 to December, 2021)",
-    desp: "<li>Performed various clerical duties with respect to the preparation of letters and other documents.</li> <li>Provided excellent customer service with a positive and professional attitude.</li> <li>Responsible for general hardware and software-related issues.</li>",
+    title: "AI Solutions Engineer",
+    org: "Momento Automation LLC, Remote",
+    time: "Dec 2025 to present",
+    current: true,
+    bullets: [
+      "Build custom AI agents and MCP server integrations that automate client intake, document handling, and notification workflows for paying small business clients.",
+      "Gather requirements directly from business owners, scope the work, and deliver each build end to end through architecture, implementation, and rollout.",
+      "Operate webhook-driven pipelines integrating Square, Supabase, and email notification, and own production infrastructure and incident response for live client systems including OAuth 2.0, hosted PostgreSQL, and DNS/SSL.",
+    ],
   },
   {
-    title: "Associate Software Engineer",
-    cardImage: "assets/images/experience-page/Ace_Hardware_Logo.jpg",
-    place: "Oak Brook, IL",
-    time: "(February, 2023 to Present)",
-    desp: "<li>.</li>",
+    title: "Software Engineer (Contract)",
+    org: "NetCashPro, Chicago, IL",
+    time: "Jun 2022 to Jan 2023",
+    bullets: [
+      "Replaced a manual financial reporting process by scoping and delivering a CFO Analysis application (ASP.NET MVC, C#) that automated profit/loss, cash flow, and revenue calculations from Excel and ERP sources.",
+      "Built the REST API layer and React reporting front end with real-time data visualizations used directly in client financial decisions.",
+      "Owned AWS deployment with testing and code-review gates to ensure performance and reliability.",
+    ],
+  },
+  {
+    title: "Software Engineering Intern",
+    org: "Orblogic (HRMatrix), Upper Saddle River, NJ",
+    time: "May to Aug 2021",
+    bullets: [
+      `Delivered ${M("20+")} RESTful APIs serving ${M("50+")} client websites, improving performance and scalability.`,
+      `Reduced API response times ${M("30%")} through endpoint and query optimization across major client projects.`,
+      "Contributed to microservices architecture design in an agile Scrum team, working directly with clients to align technical decisions with business goals.",
+    ],
   },
 ];
 
@@ -27,12 +54,15 @@ function renderTimeline() {
   if (!container) return;
   container.innerHTML = `<div class="timeline__line"></div>` + exp
     .map(
-      ({ title, place, time, desp }) => `
-      <div class="timeline__item" data-reveal>
+      ({ title, org, time, bullets, current }) => `
+      <div class="timeline__item${current ? " timeline__item--now" : ""}">
         <span class="timeline__marker"></span>
-        <h3 class="timeline__title">${title}</h3>
-        <p class="timeline__meta">${place} &middot; ${time}</p>
-        <ol class="timeline__desc">${desp}</ol>
+        <p class="timeline__meta">${time}</p>
+        <div>
+          <h3 class="timeline__title">${title}</h3>
+          <p class="timeline__org">${org}</p>
+          <ul class="timeline__desc">${bullets.map((b) => `<li>${b}</li>`).join("")}</ul>
+        </div>
       </div>`
     )
     .join("");

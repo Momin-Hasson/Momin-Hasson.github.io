@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <title>Momin Hasson | Projects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Momin Hasson's project portfolio.">
+    <meta name="description" content="Projects by Momin Hasson, including a biometric panic box built on Arduino and Raspberry Pi.">
     <meta name="robots" content="index,follow">
-    <meta property="og:site_name" content="https://momin-hasson.github.io/">
+    <meta property="og:site_name" content="Momin Hasson">
     <meta property="og:title" content="Momin Hasson | Projects">
-    <meta property="og:description" content="Momin Hasson's project portfolio.">
+    <meta property="og:description" content="Projects by Momin Hasson, including a biometric panic box built on Arduino and Raspberry Pi.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://momin-hasson.github.io/projects.html">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="https://momin-hasson.github.io/">
     <link id="favicon" rel="shortcut icon" href="assets/images/favicon.png" type="image/x-png">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-    <link rel="stylesheet" href="assets/css/project.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script>
+        try { if (localStorage.getItem("lightMode") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js");
+    </script>
+    <link rel="stylesheet" href="assets/css/site.css?v=20260923">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M11CMZ12Q"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -28,43 +33,43 @@
 </head>
 
 <body>
-    <nav class="nav">
+    <a class="skip" href="#main">Skip to content</a>
+    <nav class="nav" aria-label="Primary">
         <a class="nav__brand" href="index.html">Momin Hasson</a>
         <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
-        <ul class="nav__links">
-            <li><a class="nav__link" href="index.html">Home</a></li>
-            <li><a class="nav__link" href="education.html">Education</a></li>
-            <li><a class="nav__link" href="experience.html">Experience</a></li>
-            <li><a class="nav__link" href="projects.html">Projects</a></li>
-            <li><a class="nav__link" href="design.html">Design</a></li>
-            <li><a class="nav__link" href="research.html">Research</a></li>
-            <li><a class="nav__link" href="reference.html">Reference</a></li>
-        </ul>
+        <div class="nav__right">
+            <ul class="nav__links">
+                <li><a class="nav__link" href="index.html">Home</a></li>
+                <li><a class="nav__link" href="experience.html">Experience</a></li>
+                <li><a class="nav__link" href="projects.html">Projects</a></li>
+                <li><a class="nav__link" href="education.html">Education</a></li>
+                <li><a class="nav__link" href="assets/Momin_Hasson_Resume.pdf">Résumé</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Switch between dark and light theme" aria-pressed="false"></button>
+        </div>
     </nav>
 
-    <main class="page-main">
-        <h1 class="page-title">Projects</h1>
+    <main id="main" class="page-main">
+        <header class="page-head">
+            <h1 class="page-title rise">Projects</h1>
+            <p class="page-sub rise" style="--d:1">Personal and coursework builds. Each links to its code.</p>
+        </header>
         <div class="project-grid"></div>
     </main>
 
     <footer class="footer">
         <span>&copy; Momin Hasson</span>
         <ul class="footer__social" aria-label="Social links">
+            <li><a href="mailto:mominhasson101@gmail.com">Email</a></li>
             <li><a href="https://www.linkedin.com/in/momin-hasson/" target="_blank" rel="author noopener">LinkedIn</a></li>
             <li><a href="https://github.com/Momin-Hasson" target="_blank" rel="author noopener">GitHub</a></li>
         </ul>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-    <script src="assets/js/nav.js"></script>
-    <script src="assets/js/motion.js"></script>
-    <script src="assets/js/project.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initReveals();
-        });
-    </script>
+    <script src="assets/js/nav.js?v=20260923"></script>
+    <script src="assets/js/motion.js?v=20260923"></script>
+    <script src="assets/js/project.js?v=20260923"></script>
+    <script>document.addEventListener("DOMContentLoaded", initReveals);</script>
 </body>
 
 </html>
