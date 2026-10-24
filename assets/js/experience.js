@@ -3,13 +3,13 @@ const M = (t) => `<mark class="metric">${t}</mark>`;
 const exp = [
   {
     title: "Software Engineer",
-    org: "Ace Hardware Corporation, Oak Brook, IL",
+    org: "Ace Hardware Corporation (Fortune 500), Oak Brook, IL",
     time: "Feb 2023 to present",
     current: true,
     bullets: [
-      `Won ${M("first place")} in Ace Hardware's IT hackathon for an AI coaching assistant that gave HVAC service representatives in-call guidance and live translation, then analyzed recordings to surface upsell opportunities. Presented to the CEO and now an active company project.`,
+      `Won ${M("first place")} in Ace Hardware's IT hackathon for an AI coaching assistant that gave HVAC service representatives in-call guidance and live translation, then analyzed recordings to surface upsell opportunities. Presented to the head of IT and now an active company project.`,
       `Led the performance and caching architecture for Ace's franchise and corporate storefronts, implementing multi-instance Redis, Azure Blob image caching, and middleware optimization that cut page load times by ${M("98%")}.`,
-      "Integrated ServiceTitan authentication and the Google Reviews API to deliver real-time service data to franchise storefronts nationwide under third-party auth and rate-limit constraints.",
+      "Integrated ServiceTitan authentication and the Google Reviews API to deliver real-time service data to franchise storefronts nationwide, working within third-party authentication, rate-limit, and data-freshness constraints.",
       `Architected and delivered ${M("30+")} RESTful APIs for the Paint Redesign and Home Services platforms, defining service contracts and integration patterns now used across franchise and corporate systems.`,
       "Led security hardening across Ace online applications: migrated service account credentials to Azure Key Vault, modernized authentication to Entra ID managed identities, and set secret-handling standards adopted on every web property.",
       "Built a reusable React component library adopted across Ace web properties, eliminating duplicated front-end work and enforcing brand consistency.",
@@ -17,22 +17,12 @@ const exp = [
     ],
   },
   {
-    title: "AI Solutions Engineer",
-    org: "Momento Automation LLC, Remote",
-    time: "Dec 2025 to present",
-    current: true,
-    bullets: [
-      "Build custom AI agents and MCP server integrations that automate client intake, document handling, and notification workflows for paying small business clients.",
-      "Gather requirements directly from business owners, scope the work, and deliver each build end to end through architecture, implementation, and rollout.",
-      "Operate webhook-driven pipelines integrating Square, Supabase, and email notification, and own production infrastructure and incident response for live client systems including OAuth 2.0, hosted PostgreSQL, and DNS/SSL.",
-    ],
-  },
-  {
     title: "Software Engineer (Contract)",
     org: "NetCashPro, Chicago, IL",
     time: "Jun 2022 to Jan 2023",
     bullets: [
-      "Replaced a manual financial reporting process by scoping and delivering a CFO Analysis application (ASP.NET MVC, C#) that automated profit/loss, cash flow, and revenue calculations from Excel and ERP sources.",
+      "Embedded with the client to replace a manual financial reporting process, scoping and delivering a CFO Analysis application (ASP.NET MVC, C#) that automated profit/loss, cash flow, and revenue calculations from Excel and ERP sources.",
+      "Gathered requirements directly from the client, scoped the work, and delivered end to end through architecture, implementation, and rollout.",
       "Built the REST API layer and React reporting front end with real-time data visualizations used directly in client financial decisions.",
       "Owned AWS deployment with testing and code-review gates to ensure performance and reliability.",
     ],

@@ -17,7 +17,7 @@ function initHeroScene() {
   var isMobile = window.innerWidth < 760;
   // Technologies from the résumé, interleaved by category so each side gets a mix. Even index goes left, odd goes right.
   var stack = ['Azure', '.NET', 'Python', 'React', 'Key Vault', 'TypeScript', 'MCP', 'Redis', 'Docker', 'PostgreSQL',
-    'Claude', 'Azure Functions', 'AWS', 'Entra ID', 'n8n', 'Supabase', 'C#', 'Node.js', 'GitHub Actions', 'Cosmos DB',
+    'Claude', 'Azure Functions', 'AWS', 'Entra ID', 'LLM APIs', 'AI Agents', 'C#', 'Node.js', 'GitHub Actions', 'Cosmos DB',
     'Nginx', 'Service Bus', 'GCP', 'MongoDB'];
 
   var seed = 11;

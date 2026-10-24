@@ -226,7 +226,7 @@ a.entry:hover h2 { color: var(--accent); transform: translateX(6px); }
 
 .axis { margin: 0.5rem 0 1.25rem; font-size: 0.78rem; color: var(--muted); }
 .axis-track {
-  position: relative; height: 6.3rem; border-bottom: 1px solid var(--line);
+  position: relative; height: 4.7rem; border-bottom: 1px solid var(--line);
   background: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / 6));
 }
 .axis-bar { position: absolute; left: var(--start); width: var(--len); height: 0.85rem; border-radius: 999px; background: var(--accent); }
